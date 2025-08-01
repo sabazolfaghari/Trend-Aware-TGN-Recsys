@@ -244,7 +244,7 @@ def process_movie_for_initial_fetch(movie_id, full_title):
             return movie_id, movie_data
         else:
             #Log failed movies in JSON using `movie_id` as key
-            failed_movies_path = "C://Users//Saba//Documents//UNIVERSITY//Thesis//Thesis//Movie Similarity Code and Files//FINAL//Saved Files//FAILED_MOVIES.json"
+            failed_movies_path = "//FAILED_MOVIES.json"
             
             #Load existing failed movies to avoid overwriting
             if os.path.exists(failed_movies_path):
@@ -410,10 +410,10 @@ def main():
     TOTAL_EMBEDDING_DIM = GENRE_DIM + DIRECTOR_DIM + ACTOR_DIM + PLOT_DIM + 8  # Final size
 
     # Define file paths
-    U_DATA_PATH = "C://Users//Saba//Documents//UNIVERSITY//Thesis//Dataset//ml-100k//u.data"
-    U_ITEM_PATH = "C://Users//Saba//Documents//UNIVERSITY//Thesis//Dataset//ml-100k//u.item"
-    IMDB_METADATA_PATH = "C://Users//Saba//Documents//UNIVERSITY//Thesis//Thesis//Movie Similarity Code and Files//FINAL//Saved Files//IMDB_METADATA.json"
-    IMDB_METADATA_WITH_EMBEDDINGS_PATH = "C://Users//Saba//Documents//UNIVERSITY//Thesis//Thesis//Movie Similarity Code and Files//FINAL//Saved Files//IMDB_METADATA_WITH_EMBEDDINGS.json"
+    U_DATA_PATH = "//dataset//u.data"
+    U_ITEM_PATH = "//dataset//u.item"
+    IMDB_METADATA_PATH = "//IMDB_METADATA.json"
+    IMDB_METADATA_WITH_EMBEDDINGS_PATH = "//IMDB_METADATA_WITH_EMBEDDINGS.json"
         
     # Start time tracking
     start_time = time.time()
@@ -669,7 +669,7 @@ def main():
         entry["itemId"] += 1
 
     # Save JSON
-    with open("C://Users//Saba//Documents//UNIVERSITY//Thesis//Thesis//Movie Similarity Code and Files//FINAL//Saved Files//train_embeddings.json", "w", encoding="utf-8") as f:
+    with open("//train_embeddings.json", "w", encoding="utf-8") as f:
         json.dump(train_embeddings, f, indent=4, ensure_ascii=False)
 
     print("✅ Train embeddings saved (last epoch)!")
@@ -692,7 +692,7 @@ def main():
         entry["itemId"] += 1
 
     # Save JSON
-    with open("C://Users//Saba//Documents//UNIVERSITY//Thesis//Thesis//Movie Similarity Code and Files//FINAL//Saved Files//test_embeddings.json", "w", encoding="utf-8") as f:
+    with open("//test_embeddings.json", "w", encoding="utf-8") as f:
         json.dump(test_embeddings, f, indent=4, ensure_ascii=False)
 
     print("✅ Test embeddings saved!")
