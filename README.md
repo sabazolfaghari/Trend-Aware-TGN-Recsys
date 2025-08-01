@@ -11,7 +11,7 @@ This project uses the **[MovieLens 100K dataset](https://grouplens.org/datasets/
 - Includes timestamps and basic movie metadata (titles, release years, genres)  
 
 Due to licensing, the dataset is **not included** in this repository.  
-Please download it from the [official MovieLens website](https://grouplens.org/datasets/movielens/100k/) and use the files u.data and u.item.
+Please download it from the provided link and use the files u.data and u.item.
 
 ## Installation
 This project is implemented with Python 3.11.0.
