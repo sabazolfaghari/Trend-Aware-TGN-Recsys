@@ -21,4 +21,4 @@ pip install torch-geometric
 
 ## Usage
 ```bash
-python Trend-Aware TGN.py
+python -u "Trend-Aware TGN.py"
