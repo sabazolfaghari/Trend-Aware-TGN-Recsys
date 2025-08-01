@@ -2,7 +2,7 @@
 import json
 
 # ✅ Load the JSON file containing movie metadata
-json_file_path = "C://Users//Saba//Documents//UNIVERSITY//Thesis//Thesis//Movie Similarity Code and Files//NEW//movielens_imdb_data.json"
+json_file_path = "//movielens_imdb_data.json"
 
 with open(json_file_path, "r", encoding="utf-8") as f:
     movie_data = json.load(f)
