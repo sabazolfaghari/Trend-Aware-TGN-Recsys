@@ -537,15 +537,15 @@ def main():
             num_votes = movie.get("number_of_votes", 1)  # Default votes
             release_year = movie.get("year", 1995)  # Default mid-range year
 
-            # 1️⃣ Convert Genre One-Hot to Dense Embedding
+            # Convert Genre One-Hot to Dense Embedding
             genre_vector = torch.tensor(genres, dtype=torch.float32)
             genre_embedding_out = genre_fc(genre_vector)
 
-            # 2️⃣ Convert Director ID to Embedding
+            # Convert Director ID to Embedding
             director_idx = hash(directors[0]) % NUM_DIRECTORS if directors else 0
             director_embedding_out = director_embedding(torch.tensor(director_idx))
 
-            # 3️⃣ Convert Multiple Actors to a Single Embedding
+            # Convert Multiple Actors to a Single Embedding
             actor_ids = [hash(actor) % NUM_ACTORS for actor in cast[:5]]  # Consider up to 5 actors
             if actor_ids:
                 actor_embeddings = actor_embedding(torch.tensor(actor_ids))  # Get embeddings for all 5 actors
@@ -553,19 +553,20 @@ def main():
             else:
                 actor_embedding_out = torch.zeros(ACTOR_DIM)  # Default zero vector if no actors
 
-            # 4️⃣ Convert Plot to NLP-Based Embedding (Real BERT Model)
+            # Convert Plot to NLP-Based Embedding (Real BERT Model)
             plot_embedding_out = torch.tensor(bert_model.encode(plot_text)) if plot_text else torch.zeros(PLOT_DIM)
             plot_embedding_out = plot_embedding_out[:PLOT_DIM]  # Reduce to 64D
 
-            # 5️⃣ Normalize Numerical Values
+            # Normalize Numerical Values
             norm_rating = normalize(imdb_rating, 1, 10)
-            norm_votes = normalize(num_votes, 1, 4_000_000)
+            max_votes_in_dataset = max(movie.get("number_of_votes", 1) for movie in movie_details_list.values())
+            norm_votes = normalize(num_votes, 1, max_votes_in_dataset)
             norm_year = normalize(release_year, 1922, 1999)
 
-            # 6️⃣ Compute Popularity Momentum
+            # Compute Popularity Momentum
             popularity_momentum = compute_popularity_momentum(movie)
 
-            # 7️⃣ Concatenate All Features into One Embedding
+            # Concatenate All Features into One Embedding
             movie_embedding = torch.cat([
                 genre_embedding_out,  # (8D)
                 director_embedding_out,  # (16D)
@@ -710,3 +711,4 @@ def main():
     
 if __name__ == '__main__':
     main()
+
