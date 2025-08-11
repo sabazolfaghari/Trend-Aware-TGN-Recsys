@@ -559,7 +559,7 @@ def main():
 
             # Normalize Numerical Values
             norm_rating = normalize(imdb_rating, 1, 10)
-            max_votes_in_dataset = max(movie.get("number_of_votes", 1) for movie in movie_details_list.values())
+            max_votes_in_dataset = max((movie.get("number_of_votes") or 1) for movie in movie_details_list.values())
             norm_votes = normalize(num_votes, 1, max_votes_in_dataset)
             norm_year = normalize(release_year, 1922, 1999)
 
@@ -711,4 +711,5 @@ def main():
     
 if __name__ == '__main__':
     main()
+
 
