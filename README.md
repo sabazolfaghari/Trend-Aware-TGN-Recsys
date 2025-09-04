@@ -22,3 +22,16 @@ pip install torch-geometric
 ## Usage
 ```bash
 python -u "Trend-Aware TGN.py"
+```
+
+## Sample Output
+
+```bash
+RMSE: 0.8459
+MAE: 0.8144
+Precision@K: 0.8021
+Recall@K: 0.2011
+NDCG@K: 0.6616
+Hit Ratio@K: 0.2011
+Coverage: 0.5349
+```
